@@ -7,32 +7,32 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('../../features/auth/pages/signin/signin').then((mod) => mod.Signin)
+          import('../../features/auth/signin/signin').then((mod) => mod.Signin)
       },
       {
         path: 'register',
         loadComponent: () =>
-          import('../../features/auth/pages/signup/signup').then((mod) => mod.Signup)
+          import('../../features/auth/signup/signup').then((mod) => mod.Signup)
       },
       {
         path: 'forgot-password',
         loadComponent: () =>
-          import('../../features/auth/pages/forgot-password/forgot-password').then((mod) => mod.ForgotPassword)
+          import('../../features/auth/forgot-password/forgot-password').then((mod) => mod.ForgotPassword)
       },
       {
         path: 'check-email',
         loadComponent: () =>
-          import('../../features/auth/pages/check-email/check-email').then((mod) => mod.CheckEmail)
+          import('../../features/auth/check-email/check-email').then((mod) => mod.CheckEmail)
       },
       {
         path: 'verification-code',
         loadComponent: () =>
-          import('../../features/auth/pages/verification-code/verification-code').then((mod) => mod.VerificationCode)
+          import('../../features/auth/verification-code/verification-code').then((mod) => mod.VerificationCode)
       },
       {
         path: 'create-new-password',
         loadComponent: () =>
-          import('../../features/auth/pages/create-new-password/create-new-password').then((mod) => mod.CreateNewPassword)
+          import('../../features/auth/create-new-password/create-new-password').then((mod) => mod.CreateNewPassword)
       },
     ]
   },
@@ -43,7 +43,7 @@ export const routes: Routes = [
       {
         path: 'analytics',
         loadComponent: () =>
-          import("../../features/analytics/pages/analytics").then((mod) => mod.Analytics)
+          import("../../features/analytics/analytics").then((mod) => mod.Analytics)
       },
     ]
   }

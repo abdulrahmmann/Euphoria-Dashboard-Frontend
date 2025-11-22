@@ -1,0 +1,73 @@
+<div class="h-[65px] box box--stacked flex items-center px-5 header">
+  <div class="flex items-center justify-between w-full">
+
+    <div class="flex justify-center gap-1">
+      <div class="lg:hidden flex justify-center">
+        <p-drawer [(visible)]="visible" header="Drawer">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </p-drawer>
+        <button class="p-2 text-white rounded-full hover:bg-white/5"
+          (click)="visible = true">
+          <img src="/icons/burger.svg" alt="burger" class="size-[18px]" />
+        </button>
+      </div>
+
+      <button class="lg:hidden block p-2 text-white rounded-full hover:bg-white/5">
+        <img src="/icons/search.svg" alt="" class="size-[18px]" />
+      </button>
+    </div>
+
+    <!-- Bridge Crumb -->
+    <div class="hidden lg:flex items-center gap-1.5 text-white/90">
+      <span class="text-sm">Euphoria</span>
+      <i class="pi pi-chevron-right" style="font-size: 9px; color: white;"></i>
+
+      <span class="text-sm">Dashboard</span>
+      <i class="pi pi-chevron-right" style="font-size: 9px; color: white;"></i>
+
+      <span class="text-sm">Analytics</span>
+    </div>
+    <!-- Bread Crumb -->
+
+    <!-- Search Bar -->
+    <div class="relative justify-center flex-1 hidden lg:flex">
+      <div class="bg-white/[0.12] border-transparent border w-[350px] flex items-center py-2 px-3.5 rounded-[0.5rem] text-white/60 cursor-pointer hover:bg-white/[0.15] transition-colors duration-300 hover:duration-100">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="lucide lucide-search stroke-[1] w-[18px] h-[18px]">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <div class="ml-2.5 mr-auto">Quick search...</div>
+        <div>⌘K</div>
+      </div>
+    </div>
+    <!-- Search Bar -->
+
+    <!-- User Actions -->
+    <div class="flex items-center ml-auto">
+      <div class="flex items-center gap-1 ml-auto">
+        <button class="p-2 text-white rounded-full hover:bg-white/5">
+          <img src="/icons/dashboard.svg" alt="dashboards" class="size-[18px] opacity-70" />
+        </button>
+        <button class="p-2 text-white rounded-full hover:bg-white/5">
+          <img src="/icons/expand.svg" alt="expand" class="size-[18px] opacity-70" />
+        </button>
+        <button class="p-2 text-white rounded-full hover:bg-white/5">
+          <img src="/icons/bill.svg" alt="dashboards" class="size-[18px] opacity-70" />
+        </button>
+      </div>
+      <div class="relative ml-5">
+        <button class="cursor-pointer overflow-hidden rounded-full w-[36px] h-[36px] border-[3px] border-white/[0.15] image-fit">
+          <img src="/bg-auth-2.jpg" alt="" class="" />
+        </button>
+      </div>
+    </div>
+    <!-- User Actions -->
+
+  </div>
+</div>

@@ -1,5 +1,5 @@
-@import "primeicons/primeicons.css";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "primeicons/primeicons.css";
 @import "tailwindcss";
 @import "tailwindcss-primeui";
 
@@ -15,6 +15,7 @@ body {
   min-height: 100vh;
   height: 100%;
 }
+
 
 :root {
   --color-theme-1: rgba(55, 48, 163);
@@ -37,7 +38,7 @@ body {
 }
 
 @theme {
-  --font-bebasNeue: "Roboto", sans-serif;
+  --font-oswald: "Roboto", sans-serif;
 
   /* COLORS */
   --color-theme-1: var(--color-theme-1);
@@ -84,14 +85,26 @@ body {
   --shadow-100: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
 }
 
+button {
+  cursor: pointer;
+}
+
 .bg-auth-overlay {
-  @apply bg-gradient-to-b from-theme-1 to-theme-2 before:absolute before:bg-overlay before:bg-right before:bg-no-repeat before:bg-cover before:w-full before:h-full
+  @apply bg-gradient-to-b from-theme-1 to-theme-2 before:absolute before:bg-overlay before:bg-center before:bg-no-repeat before:bg-cover before:w-full before:h-full
 }
 
 .gradient-text {
   background: linear-gradient(to right, var(--color-primary), var(--color-theme-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.sidebar {
+  @apply bg-gradient-to-b from-theme-1 to-theme-2 before:absolute before:bg-overlay before:bg-right before:bg-no-repeat before:bg-cover before:w-full before:h-full;
+}
+
+.header {
+  @apply bg-gradient-to-r from-theme-1 to-theme-2 before:absolute before:bg-overlay before:bg-right before:bg-no-repeat before:bg-cover before:w-full before:h-full;
 }
 
 .p-inputtext {
@@ -129,4 +142,55 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgb(55 48 163 / 25%);
+}
+
+.side-menu__link {
+  display: flex;
+  align-items: center;
+  margin-bottom: .35rem;
+  border-radius: .6rem;
+  border: 1px solid transparent;
+  padding: .75rem .5rem;
+  transition-property: all;
+  transition-timing-function:
+    cubic-bezier(.4, 0, 1, 1);
+  transition-duration: .2s;
+  cursor: pointer;
+}
+.side-menu__link:hover
+{
+  @apply bg-[#ffffff1a] border-[#ffffff05] shadow-[0_2px_3px_rgba(0,0,0,0.043)];
+}
+
+
+.side-menu__link:hover .side-menu__link__icon {
+  opacity: 0.8;
+}
+
+.p-scrollpanel-bar {
+  inset-inline-end: -240px !important;
+  background: linear-gradient(to bottom, var(--color-theme-1), var(--color-theme-2)) !important;
+  opacity: 0.85;
+}
+
+.box {
+  box-shadow: 0 3px 5px #0000000b;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: .6rem;
+  position: relative;
+}
+.box--stacked:before {
+  content: "";
+  z-index: -1;
+  box-shadow: 0 1px 2px #0000000d;
+  height: 100%;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  position: absolute;
+  border-radius: .5rem;
+  left: .875rem;
+  right: .875rem;
+  top: 0;
+  margin-top: .75rem;
 }

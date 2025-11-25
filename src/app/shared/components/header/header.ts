@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { DrawerModule } from 'primeng/drawer';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {UserActions} from '../user-actions/user-actions';
 
 
 @Component({
@@ -11,6 +12,8 @@ import {NgForOf, NgIf} from '@angular/common';
     DrawerModule,
     NgIf,
     NgForOf,
+    NgClass,
+    UserActions,
   ],
   templateUrl: './header.html',
   styles: ``,
@@ -60,6 +63,21 @@ export class Header {
     }
 
     return breadcrumbs;
+  }
+
+  isDropdownActive: boolean = false;
+
+  setDropdownClick(): void {
+    this.isDropdownActive = !this.isDropdownActive;
+  }
+
+  toggleFullscreen() {
+    const elem = document.documentElement;
+    if (!document.fullscreenElement) {
+      elem.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
   }
 
 }

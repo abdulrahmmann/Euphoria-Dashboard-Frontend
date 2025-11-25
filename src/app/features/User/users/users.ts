@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {DashboardLayout} from '../../../core/layouts/dashboard-layout/dashboard-layout';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import {RouterLink} from '@angular/router';
+import {UserService} from '../../../core/services/user-service';
+import {UserModel} from '../../../core/models/User.model';
+import {ProfilePicService} from '../../../core/services/profilepic-service';
 
 @Component({
   selector: 'app-users',
@@ -14,35 +17,28 @@ import {RouterLink} from '@angular/router';
   ],
   templateUrl: './users.html',
 })
-export class Users {
-  users = [
-    { Name: 'Julia Roberts', Email: 'julia.roberts@left4code.com', Image: '/bg-auth-1.jpg',
-      Position: 'Product Manager', ProfileCompleteness: '50%', Status: 'Active',
-      JoinedDate: 'October 7, 2013', Action: 'Action'
-    },
-    { Name: 'Julia Roberts', Email: 'julia.roberts@left4code.com', Image: '/bg-auth-2.jpg',
-      Position: 'Product Manager', ProfileCompleteness: '50%', Status: 'Active',
-      JoinedDate: 'October 7, 2013', Action: 'Action'
-    },
-    { Name: 'Julia Roberts', Email: 'julia.roberts@left4code.com', Image: '/bg-auth-3.jpg',
-      Position: 'Product Manager', ProfileCompleteness: '50%', Status: 'Active',
-      JoinedDate: 'October 7, 2013', Action: 'Action'
-    },
-    { Name: 'Julia Roberts', Email: 'julia.roberts@left4code.com', Image: '/bg-auth-4.jpg',
-      Position: 'Product Manager', ProfileCompleteness: '50%', Status: 'Active',
-      JoinedDate: 'October 7, 2013', Action: 'Action'
-    },
-    { Name: 'Julia Roberts', Email: 'julia.roberts@left4code.com', Image: '/bg-auth-5.jpg',
-      Position: 'Product Manager', ProfileCompleteness: '50%', Status: 'Active',
-      JoinedDate: 'October 7, 2013', Action: 'Action'
-    },
-    { Name: 'Julia Roberts', Email: 'julia.roberts@left4code.com', Image: '/bg-auth-6.jpg',
-      Position: 'Product Manager', ProfileCompleteness: '50%', Status: 'Active',
-      JoinedDate: 'October 7, 2013', Action: 'Action'
-    },
-    { Name: 'Julia Roberts', Email: 'julia.roberts@left4code.com', Image: '/bg-auth-7.jpg',
-      Position: 'Product Manager', ProfileCompleteness: '50%', Status: 'Active',
-      JoinedDate: 'October 7, 2013', Action: 'Action'
-    },
-  ];
+export class Users implements OnInit {
+  private userService = inject(UserService);
+  protected profilePicService = inject(ProfilePicService);
+
+  users = signal<UserModel[]>([]);
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    return this.userService.getUsers().subscribe({
+      next: usersList => {
+        this.users.set(usersList.data);
+        console.log(this.users);
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
+  }
+
+
+
 }

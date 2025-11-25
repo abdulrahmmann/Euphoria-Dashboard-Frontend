@@ -44,7 +44,7 @@
     <div class="box box--stacked p-5">
       <div class="box box--stacked p-5">
         <p-table
-          [value]="users"
+          [value]="users()"
           [paginator]="true"
           [rows]="5"
           [tableStyle]="{ 'min-width': '65rem' }"
@@ -53,34 +53,79 @@
           <!-- HEADER -->
           <ng-template pTemplate="header">
             <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Profile Completeness</th>
+              <th style="width: 28%">Id</th>
+              <th style="width: 25%">UserName</th>
               <th>Status</th>
               <th>Joined Date</th>
-              <th>Action</th>
+              <th class="text-end" style="text-align: end !important;">Action</th>
             </tr>
           </ng-template>
 
           <!-- BODY -->
           <ng-template pTemplate="body" let-row>
             <tr>
+              <td class="text-sm">{{ row.id }}</td>
+
               <td>
                 <div class="flex items-center">
-                  <div class="w-9 h-9 image-fit zoom-in">
-                    <img class="size-full cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)]"
-                    alt="" [src]="row.Image">
-                  </div>
-                  <div class="ml-3.5"><a href="" class="font-medium whitespace-nowrap">{{ row.Name }}</a>
-                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ row.Email }}</div>
+                  @if (row.profileImageUrl !== null) {
+                    <div class="w-9 h-9 image-fit zoom-in">
+                      <img
+                        class="size-full rounded-full shadow-sm"
+                        alt="" [src]="row.profileImageUrl">
+                    </div>
+                  } @else {
+                    <div class="w-9 h-9 image-fit zoom-in">
+                      <div [class]="profilePicService.getStyles(row.userName)">
+                        {{ row.userName.slice(0, 2) | uppercase }}
+                      </div>
+                    </div>
+                  }
+                  <div class="ml-3.5 max-w-[250pxDisplay ]">
+                    <h3 class="font-medium truncate">{{ row.userName }}</h3>
+                    <p class="text-slate-500 text-xs mt-0.5 truncate">{{ row.email }}</p>
                   </div>
                 </div>
               </td>
-              <td class="text-sm">{{ row.Position }}</td>
-              <td class="text-sm">{{ row.ProfileCompleteness }}</td>
-              <td class="text-sm">{{ row.Status }}</td>
-              <td class="text-sm">{{ row.JoinedDate }}</td>
-              <td class="text-sm">{{ row.Action }}</td>
+
+              <td>
+                @if (row.isActive) {
+                  <div class="flex items-center text-danger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="lucide lucide-database w-3.5 h-3.5 stroke-[1.7]">
+                      <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                      <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                      <path d="M3 12A9 3 0 0 0 21 12"></path>
+                    </svg>
+                    <div class="ml-1.5 whitespace-nowrap">Inactive</div>
+                  </div>
+                } @else {
+                  <div class="flex items-center text-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="lucide lucide-database w-3.5 h-3.5 stroke-[1.7]">
+                      <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                      <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                      <path d="M3 12A9 3 0 0 0 21 12"></path>
+                    </svg>
+                    <div class="ml-1.5 whitespace-nowrap">Active</div>
+                  </div>
+                }
+              </td>
+
+              <td class="text-sm">{{ row.joinedDate | date }}</td>
+
+              <td class="text-sm">
+                <div class="flex items-center justify-end gap-3">
+                  <button >
+                    <i class="pi pi-pen-to-square" style="font-size: 16px; color: #475569"></i>
+                  </button>
+                  <button >
+                    <i class="pi pi-trash" style="font-size: 16px; color: #B91C1CFF"></i>
+                  </button>
+                </div>
+              </td>
             </tr>
           </ng-template>
 

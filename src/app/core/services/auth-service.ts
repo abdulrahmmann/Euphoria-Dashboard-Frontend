@@ -5,12 +5,14 @@ import {catchError, Observable, tap, throwError} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {LoginUser} from '../models/LoginUser.model';
 import {environment} from '../environments/environment.env';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly httpClient = inject(HttpClient);
+  private router = inject(Router);
   private apiUrl = environment.apiUrl;
 
   currentUser = signal<AuthenticationResponse | undefined>(undefined);
@@ -66,6 +68,7 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.currentUser.set(undefined);
+    this.router.navigate(['/auth/login']);
   }
 
   getToken() {

@@ -2,7 +2,8 @@
   <div [ngClass]="[sidebarExpanded? 'w-[275px]':'w-[91px]',]"
        (mouseenter)="!isPinned && (isHovered = true)"
        (mouseleave)="!isPinned && (isHovered = false)"
-       class="sidebar h-full box rounded-none lg:rounded-xl relative duration-300 transition-[width] xl:shadow-[6px_0_12px_-4px_#0000000f] overflow-hidden">
+       style="border: none !important;"
+       class="sidebar h-full box border-none rounded-none lg:rounded-xl relative duration-300 transition-[width] xl:shadow-[6px_0_12px_-4px_#0000000f] overflow-hidden">
 
     <!-- Sidebar Header -->
     <header class="flex-none hidden lg:flex items-center z-10 px-5 h-[65px] w-[275px] overflow-hidden relative duration-300 ">

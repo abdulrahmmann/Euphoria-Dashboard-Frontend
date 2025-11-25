@@ -1,0 +1,92 @@
+<app-dashboard-layout>
+
+  <header class="flex items-center justify-between">
+    <div class="text-lg font-normal">Users</div>
+
+    <a routerLink="/users/add-user"
+       class="text-sm text-white bg-primary border-primary transition duration-200 border shadow-sm flex items-center justify-center gap-1.5 py-2 px-3 rounded-md cursor-pointer">
+      <img class="size-[18px]" alt="Add User" src="/icons/add.svg">
+      Add New User
+    </a>
+  </header>
+
+  <section class="mt-3.5">
+    <div class="flex flex-col p-5 box box--stacked">
+      <div class="grid grid-cols-4 gap-5">
+        <article
+          class="col-span-4 md:col-span-2 xl:col-span-1 p-5 border border-dashed rounded-[0.6rem] border-slate-300/80 box shadow-sm">
+          <h4 class="text-base text-slate-500">Registered Users</h4>
+          <h3 class="mt-1.5 text-4xl font-bebasneue">457,204</h3>
+        </article>
+
+        <article
+          class="col-span-4 md:col-span-2 xl:col-span-1 p-5 border border-dashed rounded-[0.6rem] border-slate-300/80 box shadow-sm">
+          <h4 class="text-base text-slate-500">Active Users</h4>
+          <h3 class="mt-1.5 text-4xl font-bebasneue">122,721</h3>
+        </article>
+
+        <article
+          class="col-span-4 md:col-span-2 xl:col-span-1 p-5 border border-dashed rounded-[0.6rem] border-slate-300/80 box shadow-sm">
+          <h4 class="text-base text-slate-500">New Users</h4>
+          <h3 class="mt-1.5 text-4xl font-bebasneue">489,223</h3>
+        </article>
+
+        <article
+          class="col-span-4 md:col-span-2 xl:col-span-1 p-5 border border-dashed rounded-[0.6rem] border-slate-300/80 box shadow-sm">
+          <h4 class="text-base text-slate-500">Login Activity</h4>
+          <h3 class="mt-1.5 text-4xl font-bebasneue">411,259</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-8">
+    <div class="box box--stacked p-5">
+      <div class="box box--stacked p-5">
+        <p-table
+          [value]="users"
+          [paginator]="true"
+          [rows]="5"
+          [tableStyle]="{ 'min-width': '65rem' }"
+          [rowsPerPageOptions]="[5, 10, 20]">
+
+          <!-- HEADER -->
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Profile Completeness</th>
+              <th>Status</th>
+              <th>Joined Date</th>
+              <th>Action</th>
+            </tr>
+          </ng-template>
+
+          <!-- BODY -->
+          <ng-template pTemplate="body" let-row>
+            <tr>
+              <td>
+                <div class="flex items-center">
+                  <div class="w-9 h-9 image-fit zoom-in">
+                    <img class="size-full cursor-pointer rounded-full shadow-[0px_0px_0px_2px_#fff,_1px_1px_5px_rgba(0,0,0,0.32)]"
+                    alt="" [src]="row.Image">
+                  </div>
+                  <div class="ml-3.5"><a href="" class="font-medium whitespace-nowrap">{{ row.Name }}</a>
+                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ row.Email }}</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-sm">{{ row.Position }}</td>
+              <td class="text-sm">{{ row.ProfileCompleteness }}</td>
+              <td class="text-sm">{{ row.Status }}</td>
+              <td class="text-sm">{{ row.JoinedDate }}</td>
+              <td class="text-sm">{{ row.Action }}</td>
+            </tr>
+          </ng-template>
+
+        </p-table>
+      </div>
+    </div>
+  </section>
+
+</app-dashboard-layout>

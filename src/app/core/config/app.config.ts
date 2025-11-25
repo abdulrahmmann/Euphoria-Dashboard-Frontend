@@ -5,12 +5,15 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 
 import { routes } from './app.routes';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {AuthInterceptor} from '../interceptors/AuthInterceptor.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    provideHttpClient(withInterceptors([AuthInterceptor])),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

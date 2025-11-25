@@ -23,6 +23,7 @@
 
                 <!-- Form -->
                 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
                   <div class="mb-3">
                     <label class="block text-sm mb-1">Email</label>
                     <input pInputText
@@ -35,17 +36,54 @@
                   </div>
 
                   <div class="mb-3">
+                    <label class="block text-sm mb-1">Username</label>
+                    <input pInputText
+                           type="text"
+                           id="username"
+                           name="username"
+                           placeholder="Enter your username"
+                           formControlName="signupUsername"
+                    />
+                  </div>
+
+                  <div class="mb-3">
                     <label class="block text-sm mb-1">Password</label>
                     <p-password
                       [toggleMask]="true"
                       [showClear]="true"
                       id="password"
                       name="password"
-                      placeholder="Enter your email"
+                      placeholder="Enter your Password"
                       formControlName="signupPassword"
                     >
                       <ng-template #header>
                         <div class="font-semibold text-xm mb-4">Create Password</div>
+                      </ng-template>
+                      <ng-template #footer>
+                        <p-divider />
+                        <ul class="pl-2 my-0 leading-normal">
+                          <li>Minimum 8 characters</li>
+                          <li>At least one lowercase</li>
+                          <li>At least one uppercase</li>
+                          <li>At least one numeric</li>
+                          <li>At least one special</li>
+                        </ul>
+                      </ng-template>
+                    </p-password>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="block text-sm mb-1">Confirm Password</label>
+                    <p-password
+                      [toggleMask]="true"
+                      [showClear]="true"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      placeholder="Confirm your Password"
+                      formControlName="signupConfirmPassword"
+                    >
+                      <ng-template #header>
+                        <div class="font-semibold text-xm mb-4">Confirm Password</div>
                       </ng-template>
                       <ng-template #footer>
                         <p-divider />

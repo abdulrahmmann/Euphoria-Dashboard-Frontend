@@ -1,14 +1,10 @@
-<div class="h-[65px] box box--stacked flex items-center px-5 header">
+<div class="h-[65px] box flex items-center px-5 header" style="border: none !important;">
   <div class="flex items-center justify-between w-full">
 
     <div class="flex justify-center gap-1">
       <div class="lg:hidden flex justify-center">
         <p-drawer [(visible)]="visible" header="Drawer">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
+          <p>Lorem ipsum</p>
         </p-drawer>
         <button class="p-2 text-white rounded-full hover:bg-white/5"
           (click)="visible = true">
@@ -23,14 +19,17 @@
 
     <!-- Bridge Crumb -->
     <div class="hidden lg:flex items-center gap-1.5 text-white/90">
-      <span class="text-sm">Euphoria</span>
-      <i class="pi pi-chevron-right" style="font-size: 9px; color: white;"></i>
+      <ng-container *ngFor="let bc of breadcrumbs; let last = last">
 
-      <span class="text-sm">Dashboard</span>
-      <i class="pi pi-chevron-right" style="font-size: 9px; color: white;"></i>
+        <span class="text-sm">{{ bc.label }}</span>
 
-      <span class="text-sm">Analytics</span>
+        <ng-container *ngIf="!last">
+          <i class="pi pi-chevron-right" style="font-size: 9px; color: white;"></i>
+        </ng-container>
+
+      </ng-container>
     </div>
+
     <!-- Bread Crumb -->
 
     <!-- Search Bar -->

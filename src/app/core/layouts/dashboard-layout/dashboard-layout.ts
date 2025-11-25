@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Sidebar} from '../../../shared/components/sidebar/sidebar';
-import {NgClass, NgStyle} from '@angular/common';
+import {NgClass} from '@angular/common';
 import {Header} from '../../../shared/components/header/header';
 
 @Component({
@@ -8,7 +8,6 @@ import {Header} from '../../../shared/components/header/header';
   imports: [
     Sidebar,
     NgClass,
-    NgStyle,
     Header
   ],
   templateUrl: './dashboard-layout.html',

@@ -3,10 +3,12 @@ import {Checkbox} from 'primeng/checkbox';
 import {InputText} from 'primeng/inputtext';
 import {Password} from 'primeng/password';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {Divider} from 'primeng/divider';
 import { Toast } from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {AuthService} from '../../../core/services/auth-service';
+import {RegisterUser} from '../../../core/models/RegisterUser.model';
 
 @Component({
   selector: 'app-signup',
@@ -21,9 +23,11 @@ import {MessageService} from 'primeng/api';
   ],
   providers: [MessageService],
   templateUrl: './signup.html',
-  styles: ``,
 })
 export class Signup {
+  private readonly authService = inject(AuthService);
+  private router = inject(Router);
+
   private messageService = inject(MessageService);
 
   signupForm = new FormGroup({
@@ -31,7 +35,15 @@ export class Signup {
       validators: [Validators.required, Validators.email],
       nonNullable: true,
     }),
+    signupUsername: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(8)],
+      nonNullable: true,
+    }),
     signupPassword: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(8), Validators.maxLength(60)],
+      nonNullable: true,
+    }),
+    signupConfirmPassword: new FormControl('', {
       validators: [Validators.required, Validators.minLength(8), Validators.maxLength(60)],
       nonNullable: true,
     }),
@@ -40,17 +52,19 @@ export class Signup {
   get emailControl() {
     return this.signupForm.controls.signupEmail;
   }
-
+  get usernameControl() {
+    return this.signupForm.controls.signupUsername;
+  }
   get passwordControl() {
     return this.signupForm.controls.signupPassword;
   }
+  get confirmPasswordControl() {
+    return this.signupForm.controls.signupConfirmPassword;
+  }
 
   onSubmit() {
-    // check email
     if (this.emailControl.invalid) {
       this.emailControl.markAsTouched();
-
-      // add a toast for email detail error
       this.messageService.add({
         severity: 'warn',
         summary: 'Invalid Email',
@@ -85,11 +99,31 @@ export class Signup {
       return;
     }
 
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Welcome',
-      detail: 'Login successful!',
-      life: 3000,
+    const request: RegisterUser = {
+      Email: this.emailControl.value,
+      Username: this.usernameControl.value,
+      Password: this.passwordControl.value,
+      ConfirmPassword: this.confirmPasswordControl.value
+    };
+
+    this.authService.register(request).subscribe({
+      next: (res) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: `${res.username} Register successfully`,
+          life: 3000,
+        });
+        this.router.navigate!(['/dashboard/analytics']);
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error?.message || 'Registration failed.',
+          life: 3000,
+        });
+      }
     });
   }
 }

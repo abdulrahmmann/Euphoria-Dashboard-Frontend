@@ -1,11 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {InputText} from 'primeng/inputtext';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {Checkbox} from 'primeng/checkbox';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Password} from 'primeng/password';
 import { Toast } from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {AuthService} from '../../../core/services/auth-service';
+import {LoginUser} from '../../../core/models/LoginUser.model';
 
 @Component({
   selector: 'app-signin',
@@ -22,6 +24,9 @@ import {MessageService} from 'primeng/api';
   styles: ``,
 })
 export class Signin {
+  private readonly authService = inject(AuthService);
+  private router = inject(Router);
+
   private messageService = inject(MessageService);
 
   signinForm = new FormGroup({
@@ -83,11 +88,31 @@ export class Signin {
       return;
     }
 
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Welcome',
-      detail: 'Login successful!',
-      life: 3000,
+    const request: LoginUser = {
+      Email: this.emailControl.value,
+      Password: this.passwordControl.value
+    };
+
+    this.authService.login(request).subscribe({
+      next: (res) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: `${res.username} Login successfully`,
+          life: 3000,
+        });
+        console.log(res)
+        this.router.navigate!(['/dashboard/analytics']);
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error?.message || 'Login failed.',
+          life: 3000,
+        });
+      }
     });
+
   }
 }

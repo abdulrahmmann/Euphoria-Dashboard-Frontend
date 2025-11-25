@@ -49,20 +49,20 @@ export class Sidebar {
     {
       title: 'user managements',
       items: [
-        { name: 'Users', icon: '/icons/user.svg', route: '/users' },
-        { name: 'Add User', icon: '/icons/add.svg', route: '/users/add-new-user' },
+        { name: 'Users', icon: '/icons/user.svg', route: '/users/list' },
+        { name: 'Add User', icon: '/icons/add.svg', route: '/users/add-user' },
       ]
     },
     {
       title: 'e-commerce',
       items: [
-        { name: 'Products', icon: '/icons/products.svg', route: '/products' },
-        { name: 'Add Product', icon: '/icons/add-product.svg', route: '/products/add-product' },
-        { name: 'Categories', icon: '/icons/category.svg', route: '/categories' },
-        { name: 'reviews', icon: '/icons/reviews.svg', route: '/reviews' },
-        { name: 'product tags', icon: '/icons/reviews.svg', route: '/tags' },
-        { name: 'product badger', icon: '/icons/reviews.svg', route: '/badges' },
-        { name: 'wishlist', icon: '/icons/reviews.svg', route: '/wishlist' },
+        { name: 'Products', icon: '/icons/products.svg', route: '/ecommerce/products' },
+        { name: 'Categories', icon: '/icons/category.svg', route: '/ecommerce/categories' },
+        { name: 'brands', icon: '/icons/reviews.svg', route: '/ecommerce/brands' },
+        { name: 'reviews', icon: '/icons/reviews.svg', route: '/ecommerce/reviews' },
+        { name: 'product tags', icon: '/icons/reviews.svg', route: '/ecommerce/tags' },
+        { name: 'product badges', icon: '/icons/reviews.svg', route: '/ecommerce/badges' },
+        { name: 'wishlist', icon: '/icons/reviews.svg', route: '/ecommerce/wishlist' },
       ]
     },
 

@@ -242,3 +242,66 @@ button {
 .p-datatable-thead > tr > th {
   @apply px-5! border-b! py-4! border-t! bg-slate-50! border-slate-200/60! text-slate-500! text-sm!;
 }
+
+.p-step:has(~ .p-step-active) .p-stepper-separator {
+  background: var(--color-theme-1) !important;
+}
+
+.p-step-title {
+  color: #475569 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.p-step-active .p-step-title {
+  color: var(--color-primary) !important;
+}
+
+.p-step-number {
+  width: 40px !important;
+  height: 40px !important;
+  color: #475569 !important;
+  background: #e2e8f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  font-size: 16px !important;
+}
+
+.p-step-active .p-step-number {
+  @apply text-white! bg-primary!;
+}
+
+.p-steppanel {
+  background: transparent !important;
+  border: none !important;
+}
+
+.p-steppanels {
+  padding: 0 !important;
+}
+
+.p-datepicker {
+  width: 100% !important;
+}
+
+.p-datepicker .p-datepicker-panel {
+  min-width: 350px !important;
+}
+.p-datepicker-day-selected {
+  background: var(--color-primary) !important;
+  color: white !important;
+}
+.p-datepicker-panel, .p-datepicker .p-datepicker-panel {
+  @apply bg-gradient-to-b! from-theme-1/50! to-theme-2/50!;
+}
+
+.p-datepicker-header {
+  @apply bg-gradient-to-b! from-theme-1/50! to-theme-2/50!;
+}
+
+.p-radiobutton-box {
+  @apply bg-white! border-slate-500!
+}
+
+.p-radiobutton-checked .p-radiobutton-box .p-radiobutton-icon {
+  background: var(--color-primary) !important;
+}

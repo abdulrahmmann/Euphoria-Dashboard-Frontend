@@ -46,6 +46,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import("../../features/User/add-user/add-user").then((mod) => mod.AddUser)
       },
+      {
+        data: { breadcrumb: 'Profile' },
+        path: 'profile',
+        loadComponent: () =>
+          import("../../features/User/profile/profile").then((mod) => mod.Profile)
+      },
     ]
   },
 

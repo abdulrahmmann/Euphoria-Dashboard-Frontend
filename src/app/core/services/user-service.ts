@@ -14,7 +14,7 @@ export class UserService {
   users = signal<UserModel[] | undefined>(undefined);
 
   getUsers(): Observable<UserResponseModel> {
-    return this.httpClient.get<UserResponseModel>(`${this.apiUrl}/Account/Users/admin`).pipe(
+    return this.httpClient.get<UserResponseModel>(`${this.apiUrl}/Account/Users/user`).pipe(
       tap((response) => {
           this.users.set(response.data);
         }

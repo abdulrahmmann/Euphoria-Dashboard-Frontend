@@ -41,8 +41,8 @@
   </section>
 
   <section class="mt-8">
-    <div class="box box--stacked p-5">
-      <div class="box box--stacked p-5">
+    <div class="box box--stacked py-5 px-0">
+      <div class="">
         <p-table
           [value]="users()"
           [paginator]="true"
@@ -57,7 +57,7 @@
               <th style="width: 25%">UserName</th>
               <th>Status</th>
               <th>Joined Date</th>
-              <th class="text-end" style="text-align: end !important;">Action</th>
+              <th>Action</th>
             </tr>
           </ng-template>
 
@@ -117,7 +117,10 @@
               <td class="text-sm">{{ row.joinedDate | date }}</td>
 
               <td class="text-sm">
-                <div class="flex items-center justify-end gap-3">
+                <div class="flex items-center gap-4">
+                  <button >
+                    <i class="pi pi-eye" style="font-size: 16px; color: #0084d1"></i>
+                  </button>
                   <button >
                     <i class="pi pi-pen-to-square" style="font-size: 16px; color: #475569"></i>
                   </button>

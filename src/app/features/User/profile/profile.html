@@ -1,0 +1,266 @@
+<app-dashboard-layout>
+
+  <section class="p-1.5 box box--stacked">
+    <div
+      class="h-60 relative w-full rounded-lg bg-gradient-to-b from-theme-1/95 to-theme-2/95 before:absolute before:w-full before:h-full before:bg-overlay before:bg-no-repeat before:bg-cover ">
+      <div class="absolute inset-x-0 top-0 w-32 h-32 mx-auto mt-36">
+        <div class="w-full h-full overflow-hidden border-[6px] border-white rounded-full">
+          <img src="/bg-auth-9.jpg" alt="user image" class="w-full h-full object-cover object-top rounded-full"/>
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-5 h-5 mb-2.5 mr-2.5 border-2 border-white rounded-full bg-success"></div>
+      </div>
+    </div>
+
+    <div class="p-5 flex flex-col sm:flex-row gap-y-3 sm:items-end rounded-lg bg-slate-50 pt-12">
+      <button
+        class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md text-sm font-medium text-primary ml-auto border-primary/50 hover:bg-primary/10">
+        <img src="/icons/img-thumb.svg" alt="img thumb" class="w-4 h-4 mr-2.5"/>
+        Upload Cover
+      </button>
+    </div>
+
+  </section>
+
+  <section class="mt-7">
+    <div class="p-5 box box--stacked">
+
+      <div class="flex items-center justify-between border-b border-dashed border-slate-300/70 pb-3 mb-3">
+        <div class="text-lg font-medium">Profile Info</div>
+
+        <button class="text-sm text-white bg-primary border-primary transition duration-200 border shadow-sm flex items-center justify-center gap-2 py-2 px-4 rounded-md cursor-pointer">
+          <img alt="Add User" src="/icons/edit.svg" class="size-[18px]">
+          Edit Information
+        </button>
+      </div>
+
+      <div class="pt-3 mt-3">
+        <!-- Full Name -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">Full Name</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                Enter your full legal name as it appears on your official identification.
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <input type="text" pInputText
+                     placeholder="First Name"
+
+              />
+              <input type="text" pInputText
+                     placeholder="Second Name"
+
+              />
+              <input type="text" pInputText
+                     placeholder="Last Name"
+
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Date Of Birth -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">Date of Birth</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                This information is required to verify your age and provide age-appropriate services.
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0">
+            <p-datepicker [(ngModel)]="date2" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay"
+                          placeholder="mm-dd-yyyy"/>
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">Gender</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                Select your gender from the options.
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center bg-white w-full px-3 py-2 border rounded-md shadow-sm border-slate-300/60 ">
+                <p-radiobutton name="Male" value="Male" [(ngModel)]="gender" inputId="Male"/>
+                <label for="Male" class="ml-2">Male</label>
+              </div>
+
+              <div class="flex items-center bg-white w-full px-3 py-2 border rounded-md shadow-sm border-slate-300/60 ">
+                <p-radiobutton name="Female" value="Female" [(ngModel)]="gender" inputId="Female"/>
+                <label for="Female" class="ml-2">Female</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">Email</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                Please provide a valid email address that you have access to.
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+            <div class="grid grid-cols-1">
+              <input type="email" pInputText placeholder="Email"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- PhoneNumber -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">PhoneNumber</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                Please provide a valid phone number where we can reach you if needed.
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+            <div class="grid grid-cols-1">
+              <input type="number" pInputText placeholder="PhoneNumber"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Country  -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">Country</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                Enter the name of the country or locality where your address is located.
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+            <div class="grid grid-cols-1">
+              <input type="text" pInputText placeholder="City"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- City  -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">City</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                Enter the name of the city or locality where your address is located.
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+            <div class="grid grid-cols-1">
+              <input type="text" pInputText placeholder="City"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address Line  -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">Address Line</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                Enter the primary line of your physical address, typically including your house or building number and
+                street name.
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+            <div class="grid grid-cols-1">
+              <input type="text" pInputText placeholder="Address Line"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zip / Postal Code  -->
+        <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+          <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+            <div class="text-left">
+              <div class="flex items-center">
+                <div class="font-medium">Zip / Postal Code</div>
+                <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                  Required
+                </div>
+              </div>
+              <div class="mt-1.5 xl:mt-3 text-xs leading-relaxed text-slate-500/80">
+                Enter the postal code or ZIP code associated with your address
+              </div>
+            </div>
+          </label>
+          <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+            <div class="grid grid-cols-1">
+              <input type="text" pInputText placeholder="Zip / Postal Code"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex pt-5 mt-6 border-t border-dashed md:justify-end border-slate-300/70">
+        <button
+          class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none text-primary w-full px-4 border-primary/50 md:w-auto hover:bg-primary hover:text-white">
+          Save Changes
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+</app-dashboard-layout>

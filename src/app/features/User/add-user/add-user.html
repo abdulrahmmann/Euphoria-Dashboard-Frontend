@@ -1,3 +1,99 @@
 <app-dashboard-layout>
-  <p>badges works!</p>
+
+  <div>
+    <p-stepper [value]="1" class="basis-full" [linear]="true">
+      <p-step-list>
+        <p-step [value]="1">Personal Information</p-step>
+        <p-step [value]="2">Account Setup</p-step>
+        <p-step [value]="3">Additional Details</p-step>
+      </p-step-list>
+      <div class="box box--stacked p-7 mt-7">
+        <p-step-panels>
+
+          <p-step-panel [value]="1">
+            <ng-template #content let-activateCallback="activateCallback">
+              <div class="flex flex-col">
+                <article class="flex-col block pt-5 mt-5 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+                  <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+                    <div class="text-left">
+                      <div class="flex items-center">
+                        <div class="font-medium text-slate-600">Profile Photo</div>
+                      </div>
+                      <div class="mt-1.5 xl:mt-2 text-xs leading-relaxed text-slate-500/80">
+                        Upload a clear and recent profile photo.
+                      </div>
+                    </div>
+                  </label>
+                  <div class="flex-1 w-full mt-3 xl:mt-0">
+                    <div class="flex items-center">
+                      <div class="relative flex items-center justify-center w-24 h-24 border rounded-full bg-primary/5 border-primary/10">
+                        <img src="/upload-img.svg" alt="upload image" class="w-[65%] h-[65%] fill-slate-300/70 -mt-1.5 stroke-[0.5] stroke-slate-400/50" />
+                        <button class="absolute bottom-0 right-0 flex items-center justify-center rounded-full box w-7 h-7"
+                                style="position: absolute!important; border-radius: 50%!important;">
+                          <i class="pi pi-pencil" style="font-size: 12px; color: #64748b;"></i>
+                        </button>
+                      </div>
+
+                      <button
+                        class="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer text-xs py-1.5 px-2 border-secondary text-slate-500 pl-3.5 pr-4 mr-2 h-8 ml-8">
+                        <i class="pi pi-trash" style="font-size: 12px; color: #64748b; margin-right: 6px;"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="flex-col block pt-5 mt-5 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+
+                </article>
+
+              </div>
+              <div class="flex justify-end">
+                <button (click)="activateCallback(2)" class="px-4 py-2 rounded-md text-white bg-theme-1">
+                  Next
+                </button>
+              </div>
+            </ng-template>
+          </p-step-panel>
+
+          <p-step-panel [value]="2">
+            <ng-template #content let-activateCallback="activateCallback">
+              <div class="flex flex-col h-48">
+                <div class="">
+                  Content II
+                </div>
+              </div>
+              <div class="flex justify-between">
+                <button (click)="activateCallback(1)" class="px-4 py-2 rounded-md text-white bg-theme-1">
+                  Back
+                </button>
+                <button (click)="activateCallback(3)" class="px-4 py-2 rounded-md text-white bg-theme-1">
+                  Next
+                </button>
+              </div>
+            </ng-template>
+          </p-step-panel>
+
+          <p-step-panel [value]="3">
+            <ng-template #content let-activateCallback="activateCallback">
+              <div class="flex flex-col h-48">
+                <div class=""
+                >
+                  Content III
+                </div>
+              </div>
+              <div class="flex justify-start">
+                <button (click)="activateCallback(2)" class="px-4 py-2 rounded-md text-white bg-theme-1">
+                  Back
+                </button>
+              </div>
+            </ng-template>
+          </p-step-panel>
+
+        </p-step-panels>
+      </div>
+
+    </p-stepper>
+  </div>
+
 </app-dashboard-layout>

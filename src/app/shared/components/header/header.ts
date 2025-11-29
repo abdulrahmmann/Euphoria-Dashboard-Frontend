@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DrawerModule } from 'primeng/drawer';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {UserActions} from '../user-actions/user-actions';
 
 
@@ -14,6 +14,7 @@ import {UserActions} from '../user-actions/user-actions';
     NgForOf,
     NgClass,
     UserActions,
+    NgOptimizedImage,
   ],
   templateUrl: './header.html',
   styles: ``,

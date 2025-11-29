@@ -1,3 +1,92 @@
 <app-dashboard-layout>
-  <p>badges works!</p>
+
+  <section class="p-5 box box--stacked">
+
+    <div>
+
+      <!-- Image -->
+      <div class="flex flex-col gap-3 pt-3 mt-3 first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Category Image</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Upload a clear and recent category image.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0">
+          <div class="relative flex items-center justify-center w-28 h-28 border rounded-full bg-primary/5 border-primary/10">
+            <img ngSrc="/upload-img.svg" alt="upload image" width="24" height="24"
+                 class="w-[75%] h-[75%] fill-slate-300/70 -mt-1.5 stroke-[0.5] stroke-slate-400/50"/>
+
+            <button class="absolute bottom-0 right-0 flex items-center justify-center rounded-full box w-7 h-7"
+                    style="position:absolute!important;border-radius: 50%!important">
+              <i class="pi pi-pencil" style="font-size: 12px; color: #64748b"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Name -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Name</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Please provide a unique category name.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <input type="text" pInputText placeholder="Category Name"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Description</div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Provide a description.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <p-floatlabel variant="on">
+              <textarea
+                pTextarea id="over_label" rows="5" cols="30" style="resize: none"
+                class="h-full bg-transparent w-full text-primary-text border-primary-text focus:ring-4 focus:ring-primary/40 focus:border focus:border-primary rounded-md">
+              </textarea>
+              <label for="on_label">Description</label>
+            </p-floatlabel>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="flex pt-5 mt-6 border-t border-dashed md:justify-end border-slate-300/70">
+      <button class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none text-primary w-full px-4 border-primary/50 md:w-auto hover:bg-primary hover:text-white">
+        Save Changes
+      </button>
+    </div>
+
+  </section>
+
 </app-dashboard-layout>

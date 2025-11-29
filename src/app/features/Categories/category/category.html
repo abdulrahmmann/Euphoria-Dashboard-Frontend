@@ -1,3 +1,90 @@
 <app-dashboard-layout>
-  <p>badges works!</p>
+
+  <header class="flex items-center justify-between">
+    <div class="text-lg font-normal">Categories</div>
+
+    <a routerLink="/ecommerce/add-category" class="text-sm text-white bg-primary border-primary transition duration-200 border shadow-sm flex items-center justify-center gap-1.5 py-2 px-3 rounded-md cursor-pointer">
+      <img class="size-[18px]" alt="Add User" src="/icons/add.svg">
+      Add New Category
+    </a>
+  </header>
+
+  <section class="mt-3.5">
+    <div class="flex flex-col p-5 box box--stacked">
+      <div class="grid grid-cols-4 gap-5">
+        <!-- Categories without products -->
+        <article class="col-span-4 md:col-span-2 xl:col-span-1 p-5 border border-dashed rounded-[0.6rem] border-slate-300/80 box shadow-sm">
+          <h4 class="text-base text-slate-500">Categories Without Products</h4>
+          <h3 class="mt-1.5 text-4xl font-bebasneue">14</h3>
+        </article>
+
+        <!-- Categories missing images -->
+        <article class="col-span-4 md:col-span-2 xl:col-span-1 p-5 border border-dashed rounded-[0.6rem] border-slate-300/80 box shadow-sm">
+          <h4 class="text-base text-slate-500">Missing Images</h4>
+          <h3 class="mt-1.5 text-4xl font-bebasneue">7</h3>
+        </article>
+
+        <!-- Average products per category -->
+        <article class="col-span-4 md:col-span-2 xl:col-span-1 p-5 border border-dashed rounded-[0.6rem] border-slate-300/80 box shadow-sm">
+          <h4 class="text-base text-slate-500">Avg Products per Category</h4>
+          <h3 class="mt-1.5 text-4xl font-bebasneue">62</h3>
+        </article>
+
+        <!-- Most viewed category -->
+        <article class="col-span-4 md:col-span-2 xl:col-span-1 p-5 border border-dashed rounded-[0.6rem] border-slate-300/80 box shadow-sm">
+          <h4 class="text-base text-slate-500">Most Viewed Category</h4>
+          <h3 class="mt-1.5 text-4xl font-bebasneue">Shoes</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-8">
+    <div class="box box--stacked py-5 px-0">
+      <div class="">
+        <p-table
+          [paginator]="true"
+          [rows]="5"
+          [tableStyle]="{ 'min-width': '65rem' }"
+          [rowsPerPageOptions]="[5, 10, 20]">
+
+          <!-- HEADER -->
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Total Products</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </ng-template>
+
+          <!-- BODY -->
+          <ng-template pTemplate="body" let-row>
+            <tr>
+              <td class="text-sm">Name</td>
+              <td class="text-sm">Description</td>
+              <td class="text-sm">Total Products</td>
+              <td class="text-sm">Status</td>
+              <td class="text-sm">
+                <div class="flex items-center gap-4">
+                  <button>
+                    <i class="pi pi-eye" style="font-size: 16px; color: #0084d1"></i>
+                  </button>
+                  <button>
+                    <i class="pi pi-pen-to-square" style="font-size: 16px; color: #475569"></i>
+                  </button>
+                  <button>
+                    <i class="pi pi-trash" style="font-size: 16px; color: #B91C1CFF"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+
+        </p-table>
+      </div>
+    </div>
+  </section>
+
 </app-dashboard-layout>

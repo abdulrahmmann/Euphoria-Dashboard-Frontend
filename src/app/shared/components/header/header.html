@@ -19,15 +19,14 @@
 
     <!-- Bridge Crumb -->
     <div class="hidden lg:flex items-center gap-1.5 text-white/90">
-      <ng-container *ngFor="let bc of breadcrumbs; let last = last">
 
+      @for (bc of breadcrumbs; track bc.url; let last = $last) {
         <span class="text-sm">{{ bc.label }}</span>
 
-        <ng-container *ngIf="!last">
+        @if (!last) {
           <i class="pi pi-chevron-right" style="font-size: 9px; color: white;"></i>
-        </ng-container>
-
-      </ng-container>
+        }
+      }
     </div>
 
     <!-- Bread Crumb -->
@@ -63,7 +62,7 @@
 
       <div class="relative ml-5">
         <button (click)="setDropdownClick()" class="cursor-pointer overflow-hidden rounded-full w-[36px] h-[36px] border-[3px] border-white/[0.15] image-fit">
-          <img src="/bg-auth-2.jpg" alt="" class="" />
+          <img ngSrc="/bg-auth-2.jpg" alt="" class="rounded-full" fill loading="lazy" />
         </button>
 
         <div

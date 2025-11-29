@@ -135,6 +135,7 @@ button {
 .auth-bg-overlay {
   @apply relative;
 }
+
 .auth-bg-overlay::before {
   content: "";
   position: absolute;
@@ -153,13 +154,12 @@ button {
   border: 1px solid transparent;
   padding: .75rem .5rem;
   transition-property: all;
-  transition-timing-function:
-    cubic-bezier(.4, 0, 1, 1);
+  transition-timing-function: cubic-bezier(.4, 0, 1, 1);
   transition-duration: .2s;
   cursor: pointer;
 }
-.side-menu__link:hover
-{
+
+.side-menu__link:hover {
   @apply bg-[#ffffff1a] border-[#ffffff05] shadow-[0_2px_3px_rgba(0,0,0,0.043)];
 }
 
@@ -181,6 +181,7 @@ button {
   border-radius: .6rem;
   position: relative;
 }
+
 .box--stacked:before {
   content: "";
   z-index: -1;
@@ -286,10 +287,12 @@ button {
 .p-datepicker .p-datepicker-panel {
   min-width: 350px !important;
 }
+
 .p-datepicker-day-selected {
   background: var(--color-primary) !important;
   color: white !important;
 }
+
 .p-datepicker-panel, .p-datepicker .p-datepicker-panel {
   @apply bg-gradient-to-b! from-theme-1/50! to-theme-2/50!;
 }
@@ -305,3 +308,39 @@ button {
 .p-radiobutton-checked .p-radiobutton-box .p-radiobutton-icon {
   background: var(--color-primary) !important;
 }
+
+.p-fileupload-advanced {
+  background: transparent !important;
+}
+
+.p-fileupload-file {
+  color: #475569 !important;
+}
+
+.p-fileupload-choose-button {
+  background: var(--color-primary) !important;
+  color: white !important;
+  border-color: var(--color-primary) !important;
+}
+
+
+.p-textarea {
+  background: transparent !important;
+  color: #475569 !important;
+}
+
+.p-textarea:enabled:focus {
+  border-color: var(--color-primary) !important;
+}
+
+.p-floatlabel:has(input:focus) label,
+.p-floatlabel:has(input:-webkit-autofill) label,
+.p-floatlabel:has(textarea:focus) label,
+.p-floatlabel:has(.p-inputwrapper-focus) label {
+  color: white !important;
+  background: var(--color-theme-1) !important;
+  padding: 3px 6px !important;
+  border-radius: 3px !important;
+}
+
+

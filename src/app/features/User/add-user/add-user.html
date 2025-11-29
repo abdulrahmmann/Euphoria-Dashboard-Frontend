@@ -1,99 +1,377 @@
 <app-dashboard-layout>
 
-  <div>
-    <p-stepper [value]="1" class="basis-full" [linear]="true">
-      <p-step-list>
-        <p-step [value]="1">Personal Information</p-step>
-        <p-step [value]="2">Account Setup</p-step>
-        <p-step [value]="3">Additional Details</p-step>
-      </p-step-list>
-      <div class="box box--stacked p-7 mt-7">
-        <p-step-panels>
+  <section class="p-5 box box--stacked">
 
-          <p-step-panel [value]="1">
-            <ng-template #content let-activateCallback="activateCallback">
-              <div class="flex flex-col">
-                <article class="flex-col block pt-5 mt-5 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
-                  <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
-                    <div class="text-left">
-                      <div class="flex items-center">
-                        <div class="font-medium text-slate-600">Profile Photo</div>
-                      </div>
-                      <div class="mt-1.5 xl:mt-2 text-xs leading-relaxed text-slate-500/80">
-                        Upload a clear and recent profile photo.
-                      </div>
-                    </div>
-                  </label>
-                  <div class="flex-1 w-full mt-3 xl:mt-0">
-                    <div class="flex items-center">
-                      <div class="relative flex items-center justify-center w-24 h-24 border rounded-full bg-primary/5 border-primary/10">
-                        <img src="/upload-img.svg" alt="upload image" class="w-[65%] h-[65%] fill-slate-300/70 -mt-1.5 stroke-[0.5] stroke-slate-400/50" />
-                        <button class="absolute bottom-0 right-0 flex items-center justify-center rounded-full box w-7 h-7"
-                                style="position: absolute!important; border-radius: 50%!important;">
-                          <i class="pi pi-pencil" style="font-size: 12px; color: #64748b;"></i>
-                        </button>
-                      </div>
+    <div>
+      <div class="text-lg font-medium border-b border-dashed border-slate-300/70 pb-3 mb-3">Profile Info</div>
 
-                      <button
-                        class="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer text-xs py-1.5 px-2 border-secondary text-slate-500 pl-3.5 pr-4 mr-2 h-8 ml-8">
-                        <i class="pi pi-trash" style="font-size: 12px; color: #64748b; margin-right: 6px;"></i>
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                </article>
-
-                <article class="flex-col block pt-5 mt-5 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
-
-                </article>
-
+      <!-- Image -->
+      <div class="flex flex-col gap-3 pt-3 mt-3 first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Profile Photo</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
               </div>
-              <div class="flex justify-end">
-                <button (click)="activateCallback(2)" class="px-4 py-2 rounded-md text-white bg-theme-1">
-                  Next
-                </button>
-              </div>
-            </ng-template>
-          </p-step-panel>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Upload a clear and recent profile photo.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0">
+          <div>
+            <p-toast />
+            <p-fileupload name="file" [auto]="false" [customUpload]="true"
+                          (onSelect)="onSelect($event)" [multiple]="false"  accept="image/*" mode="advanced">
+              <ng-template #empty>
+                <div class="text-[#475569] font-medium">Drag and drop image here to upload.</div>
+              </ng-template>
+            </p-fileupload>
+          </div>
+<!--          <div class="relative flex items-center justify-center w-28 h-28 border rounded-full bg-primary/5 border-primary/10">-->
+<!--            <img src="/upload-img.svg" alt="upload image" class="w-[75%] h-[75%] fill-slate-300/70 -mt-1.5 stroke-[0.5] stroke-slate-400/50" />-->
 
-          <p-step-panel [value]="2">
-            <ng-template #content let-activateCallback="activateCallback">
-              <div class="flex flex-col h-48">
-                <div class="">
-                  Content II
-                </div>
-              </div>
-              <div class="flex justify-between">
-                <button (click)="activateCallback(1)" class="px-4 py-2 rounded-md text-white bg-theme-1">
-                  Back
-                </button>
-                <button (click)="activateCallback(3)" class="px-4 py-2 rounded-md text-white bg-theme-1">
-                  Next
-                </button>
-              </div>
-            </ng-template>
-          </p-step-panel>
-
-          <p-step-panel [value]="3">
-            <ng-template #content let-activateCallback="activateCallback">
-              <div class="flex flex-col h-48">
-                <div class=""
-                >
-                  Content III
-                </div>
-              </div>
-              <div class="flex justify-start">
-                <button (click)="activateCallback(2)" class="px-4 py-2 rounded-md text-white bg-theme-1">
-                  Back
-                </button>
-              </div>
-            </ng-template>
-          </p-step-panel>
-
-        </p-step-panels>
+<!--            <button class="absolute bottom-0 right-0 flex items-center justify-center rounded-full box w-7 h-7" style="position:absolute!important;border-radius: 50%!important">-->
+<!--              <i class="pi pi-pencil" style="font-size: 12px; color: #64748b"></i>-->
+<!--            </button>-->
+<!--          </div>-->
+        </div>
       </div>
 
-    </p-stepper>
-  </div>
+      <!-- Role -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Role</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Select the user role
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="flex items-center bg-white w-full px-3 py-2 border rounded-md shadow-sm border-slate-300/60 ">
+              <p-radiobutton name="Admin" value="Admin" [(ngModel)]="role" inputId="Admin"/>
+              <label for="Admin" class="ml-2">Admin</label>
+            </div>
+
+            <div class="flex items-center bg-white w-full px-3 py-2 border rounded-md shadow-sm border-slate-300/60 ">
+              <p-radiobutton name="User" value="User" [(ngModel)]="role" inputId="User"/>
+              <label for="User" class="ml-2">User</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Name -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Full Name</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Enter your full legal name as it appears on your official identification.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <input type="text" pInputText
+                   placeholder="First Name"
+
+            />
+            <input type="text" pInputText
+                   placeholder="Second Name"
+
+            />
+            <input type="text" pInputText
+                   placeholder="Last Name"
+
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Date Of Birth -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Date of Birth</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              This information is required to verify your age and provide age-appropriate services.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0">
+          <p-datepicker [(ngModel)]="date2" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay"
+                        placeholder="mm-dd-yyyy"/>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Gender</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Select your gender from the options.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="flex items-center bg-white w-full px-3 py-2 border rounded-md shadow-sm border-slate-300/60 ">
+              <p-radiobutton name="Male" value="Male" [(ngModel)]="gender" inputId="Male"/>
+              <label for="Male" class="ml-2">Male</label>
+            </div>
+
+            <div class="flex items-center bg-white w-full px-3 py-2 border rounded-md shadow-sm border-slate-300/60 ">
+              <p-radiobutton name="Female" value="Female" [(ngModel)]="gender" inputId="Female"/>
+              <label for="Female" class="ml-2">Female</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Email</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Please provide a valid email address that you have access to.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <input type="email" pInputText placeholder="Email"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Password</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Please provide a strong password.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <p-password
+              [toggleMask]="true"
+              [showClear]="true"
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Confirm Password</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Please provide a confirm password.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <p-password
+              [toggleMask]="true"
+              [showClear]="true"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- PhoneNumber -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">PhoneNumber</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Please provide a valid phone number where we can reach you if needed.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <input type="number" pInputText placeholder="PhoneNumber"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Country  -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Country</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Enter the name of the country or locality where your address is located.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <input type="text" pInputText placeholder="City"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- City  -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">City</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Enter the name of the city or locality where your address is located.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <input type="text" pInputText placeholder="City"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address Line  -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Address Line</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Enter the primary line of your physical address, typically including your house or building number and
+              street name.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <input type="text" pInputText placeholder="Address Line"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zip / Postal Code  -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Zip / Postal Code</div>
+              <div class="ml-2.5 px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-md border border-slate-200">
+                Required
+              </div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Enter the postal code or ZIP code associated with your address
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <input type="text" pInputText placeholder="Zip / Postal Code"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="flex-col block pt-3 mt-3 xl:items-center sm:flex xl:flex-row first:mt-0 first:pt-0">
+        <label class="inline-block mb-2 sm:mb-0 sm:mr-5 sm:text-right xl:w-60 xl:mr-14">
+          <div class="text-left">
+            <div class="flex items-center">
+              <div class="font-medium">Bio</div>
+            </div>
+            <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80">
+              Provide a Bio.
+            </div>
+          </div>
+        </label>
+        <div class="flex-1 w-full mt-3 xl:mt-0 grid">
+          <div class="grid grid-cols-1">
+            <p-floatlabel variant="on">
+              <textarea pTextarea id="over_label" rows="5" cols="30" style="resize: none" class="h-full bg-transparent w-full text-primary-text border-primary-text focus:ring-4 focus:ring-primary/40 focus:border focus:border-primary rounded-md"></textarea>
+              <label for="on_label">Bio</label>
+            </p-floatlabel>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex pt-5 mt-6 border-t border-dashed md:justify-end border-slate-300/70">
+      <button class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none text-primary w-full px-4 border-primary/50 md:w-auto hover:bg-primary hover:text-white">
+        Save Changes
+      </button>
+    </div>
+
+  </section>
 
 </app-dashboard-layout>

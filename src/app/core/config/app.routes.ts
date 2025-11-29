@@ -19,7 +19,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     data: { breadcrumb: 'Dashboard' },
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     children: [
       {
         path: 'analytics',
@@ -58,7 +58,7 @@ export const routes: Routes = [
   {
     path: 'ecommerce',
     data: { breadcrumb: 'Ecommerce' },
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     children: [
       {
         data: { breadcrumb: 'Products' },
@@ -66,60 +66,70 @@ export const routes: Routes = [
         loadComponent: () =>
           import("../../features/Product/products/products").then((mod) => mod.Products)
       },
+
       {
         data: { breadcrumb: 'Add Product' },
         path: 'add-product',
         loadComponent: () =>
           import("../../features/Product/add-product/add-product").then((mod) => mod.AddProduct)
       },
+
       {
         data: { breadcrumb: 'Categories' },
         path: 'categories',
         loadComponent: () =>
           import("../../features/Categories/category/category").then((mod) => mod.Category)
       },
+
       {
         data: { breadcrumb: 'Add Category' },
         path: 'add-category',
         loadComponent: () =>
           import("../../features/Categories/add-category/add-category").then((mod) => mod.AddCategory)
       },
+
       {
         data: { breadcrumb: 'Brands' },
         path: 'brands',
         loadComponent: () =>
           import("../../features/Brand/brands/brands").then((mod) => mod.Brands)
       },
+
       {
         data: { breadcrumb: 'Add Brand' },
         path: 'add-brand',
         loadComponent: () =>
           import("../../features/Brand/add-brand/add-brand").then((mod) => mod.AddBrand)
       },
+
       {
         data: { breadcrumb: 'Tags' },
         path: 'tags',
         loadComponent: () =>
           import("../../features/Tag/tags/tags").then((mod) => mod.Tags)
       },
+
       {
         data: { breadcrumb: 'Add Tag' },
         path: 'add-tag',
         loadComponent: () =>
           import("../../features/Tag/add-tag/add-tag").then((mod) => mod.AddTag)
       },
+
       {
         data: { breadcrumb: 'Badges' },
         path: 'badges',
         loadComponent: () =>
           import("../../features/Badge/badges/badges").then((mod) => mod.Badges)
       },
+
       {
         data: { breadcrumb: 'Add Badge' },
         path: 'add-badge',
         loadComponent: () =>
           import("../../features/Badge/add-badge/add-badge").then((mod) => mod.AddBadge)
       },
+
       {
         data: { breadcrumb: 'Reviews' },
         path: 'reviews',
